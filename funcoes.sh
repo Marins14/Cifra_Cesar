@@ -8,7 +8,7 @@ function criptografar(){
     read -p "Digite o texto a ser criptografado: " texto
     texto=$(echo $texto | tr '[:lower:]' '[:upper:]')
     #Variável que recebe o número de casas a serem deslocadas
-    local numero_casas=3
+    local numero_casas=$default
     #Variável que recebe o alfabeto
     local alfabeto=$normal
     #Variável que recebe o alfabeto deslocado
@@ -24,7 +24,7 @@ function descriptografar(){
     read -p "Digite o texto a ser descriptografado: " texto
     texto=$(echo $texto | tr '[:lower:]' '[:upper:]')
     #Variável que recebe o número de casas a serem deslocadas
-    local numero_casas=3
+    local numero_casas=$default
     #Variável que recebe o alfabeto
     local alfabeto=$cifrado
     #Variável que recebe o alfabeto deslocado
@@ -45,6 +45,12 @@ function criptografar_com_chave(){
     while [ $chave -eq 3 ];do
         echo "Número de casas igual a 3, por padrão" 
         echo "Favor digitar um valor diferente de 3"
+        echo "OBS: Caso seja 3, usar a opção 1"
+        read -p "Deseja voltar ao menu? (s/n): " resposta
+        resposta=$(echo $resposta | tr [:upper:] [:lower:])
+        if [ $resposta == "s" ];then
+            main
+        fi
         read -p "Digite o número de casas a serem deslocadas: " chave
     done
     #Variável que recebe o número de casas a serem deslocadas
@@ -70,6 +76,11 @@ function descriptografar_com_chave(){
         echo "Número de casas igual a 3, por padrão" 
         echo "Favor digitar um valor diferente de 3"
         echo "OBS: Caso seja 3, usar a opção 2"
+        read -p "Deseja voltar ao menu? (s/n): " resposta
+        resposta=$(echo $resposta | tr [:upper:] [:lower:])
+        if [ $resposta == "s" ];then
+            main
+        fi
         read -p "Digite o número de casas a serem deslocadas: " chave
     done
     #Variável que recebe o número de casas a serem deslocadas

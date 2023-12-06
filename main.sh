@@ -5,19 +5,20 @@
 # Data: 05/12/2023                                 #
 #--------------------------------------------------#
 
-#Criando funções para respeitar a cifra de césar
-
 #Importando o alfabeto e as funções
 . alfabeto.sh
 . funcoes.sh
 
 #Função principal 
 function main(){
+    echo "Criptografia de César"
+    echo "---------------------"
     echo "1 - Criptografar"
     echo "2 - Descriptografar"
     echo "3 - Criptografar com chave"
     echo "4 - Descriptografar com chave"
     read -p "Digite a opção desejada: " opcao
+    echo "---------------------"
     case $opcao in
         1) criptografar 
             ;;
@@ -35,6 +36,7 @@ function main(){
 while true;do
     main
     read -p "Deseja continuar? (s/n): " resposta
+    resposta=$(echo $resposta | tr [:upper:] [:lower:])
     if [ $resposta == "n" ];then
         echo "Saindo..."
         exit
